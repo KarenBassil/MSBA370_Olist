@@ -683,6 +683,15 @@ else:
 		st.write("")
 		st.plotly_chart(fig)
 
+st.write("""Based on the price, the health beauty category presents the highest total revenue across the months, 
+	whereas the security and services did not contribute significantly to revenues order. On the other hand, 
+	the computers category is identified to be the top 1 with regard to the average price across all other categories, 
+	and the lowest 1 is related to home conform 2 categories. In addition, based on the freight value, our product with the highest 
+	cost of shipment is the bed bath table. We could say that bigger and heavier products need greater total expenditures for cargo. 
+	Whereas, the security and services category contribute to only around $400. Furthermore, it is surprisingly to detect that the computers 
+	category present the highest average freight value, and that might be due to the fact that greater carefulness is required in order not to damage the product. 
+	Plus, fashion children clothes have indeed the lowest average freight value cost compared to all other products.""")
+
 st.header('Orders Shipment and Payment')
 
 shipment = orders.groupby('order_status', as_index=False)['order_id'].count()
@@ -974,6 +983,13 @@ st.write("""Customers segmentation can be a very powerfull decision making tool.
 	Recency, Frequency, and Monetary value. These three can be analyzed in order to predict an additional indicator which is the Customer Lifetime Value (CLV). 
 	The CLV allows the company to estimate the total worth of an individual customer or a group of customers.""")
 
+if st.checkbox('Show me 3D Plot of RFM'):
+	data = px.scatter_3d(RFM, x='Frequency', y='Recency', z='Monetary Value',color='CLV', opacity = 0.7)
+
+	data.update_layout(margin=dict(l=10, r=10, b=50, t=50))
+
+	fig = go.Figure(data = data)
+	st.plotly_chart(fig)
 
 text = ("""	Based on our analysis, four clusters were identified regarding the Customer Lifetime Value of Olist's clients. The first cluster include customers with 
 CLV less than 12, the second cluster contains customers with CLV between 12 and 36, while the third cluster presentens clients with CLV between 36 and  98. And finally, 
@@ -989,7 +1005,17 @@ st.markdown(html_text, unsafe_allow_html=True)
 
 st.write("")
 expander_1 = st.beta_expander("Action to take based on CLV prediction")
-expander_1.write("Recency: date of last purchase in days")
+expander_1.write("""Cluster 1 is identified to include new customers, and in order to turn them into long-term clients, 
+Olist must focus on investing in their customer experience journey. One way to do that is by building a connection between 
+each customer and the Olist brand. Another way is to focus on recommendation systems that would allow Olist to target customers 
+in a more efficient way through recommending probable wanted items to purchase.""")
+expander_1.write("""Cluster 2 is identified to include customers at risk. This type of customer must be targeted through direct reach 
+	in order to unravel issues and problems that affected negatively their journey. Through the identification of possible complaints, 
+	Olist can take the necessary action and try to tackle presented obstacles.""")
+expander_1.write("""Cluster 3 is identified to include potential loyalists and can be targeted through the loyalty program incentive where several 
+benefits and discounts can be offered to maintain the clients cohort and turn them into loyal customers.""")
+expander_1.write("""Cluster 4 is identified to include loyal customers. Olist must continue strenghtening its relationship with them and 
+could offer free gifts as well as sharing exclusive news that would allow the loyal customers feel special.""")
 
 st.write("")
 expander_2 = st.beta_expander("Information regarding Recency, Frequency, and Monetary Value")
@@ -1010,7 +1036,7 @@ col1, col2, col3 = st.beta_columns((1,2,1))
 X_data = pd.DataFrame({'Recency': [rec], 'Frequency' : [freq], ' Monetary Value': [mon]})
 if col2.button('Predict Customer Lifetime Value'):
 	prediction = model.predict(X_data)
-	st.write(prediction[0])
+	st.write("Predicted Customer Lifetime Value to be equal to: ", round(prediction[0],2))
 
 
 
