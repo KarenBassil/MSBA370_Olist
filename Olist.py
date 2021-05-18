@@ -683,14 +683,14 @@ else:
 		st.write("")
 		st.plotly_chart(fig)
 
-st.write("""Based on the price, the health beauty category presents the highest total revenue across the months, 
-	whereas the security and services did not contribute significantly to revenues order. On the other hand, 
-	the computers category is identified to be the top 1 with regard to the average price across all other categories, 
-	and the lowest 1 is related to home conform 2 categories. In addition, based on the freight value, our product with the highest 
-	cost of shipment is the bed bath table. We could say that bigger and heavier products need greater total expenditures for cargo. 
-	Whereas, the security and services category contribute to only around $400. Furthermore, it is surprisingly to detect that the computers 
-	category present the highest average freight value, and that might be due to the fact that greater carefulness is required in order not to damage the product. 
-	Plus, fashion children clothes have indeed the lowest average freight value cost compared to all other products.""")
+	st.write("""Based on the price, the health beauty category presents the highest total revenue across the months, 
+		whereas the security and services did not contribute significantly to revenues order. On the other hand, 
+		the computers category is identified to be the top 1 with regard to the average price across all other categories, 
+		and the lowest 1 is related to home conform 2 categories. In addition, based on the freight value, our product with the highest 
+		cost of shipment is the bed bath table. We could say that bigger and heavier products need greater total expenditures for cargo. 
+		Whereas, the security and services category contribute to only around $400. Furthermore, it is surprisingly to detect that the computers 
+		category present the highest average freight value, and that might be due to the fact that greater carefulness is required in order not to damage the product. 
+		Plus, fashion children clothes have indeed the lowest average freight value cost compared to all other products.""")
 
 st.header('Orders Shipment and Payment')
 
